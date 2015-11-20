@@ -2,7 +2,16 @@
   "name": "mocha-gherkin",
   "version": "0.0.1",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
-  "keywords": ["mocha", "gherkin", "bdd", "cucumber", "test", "feature", "scenario", "user story" ],
+  "keywords": [
+    "mocha",
+    "gherkin",
+    "bdd",
+    "cucumber",
+    "test",
+    "feature",
+    "scenario",
+    "user story"
+  ],
   "author": "James G. Kim <jgkim@jayg.org> (http://jayg.org/)",
   "bugs": "https://github.com/jgkim/mocha-gherkin/issues",
   "repository": "jgkim/mocha-gherkin",
@@ -15,7 +24,9 @@
     "colors": "latest"
   },
   "devDependencies": {
+    "chai": "latest",
+    "coveralls": "latest",
     "mocha": "latest",
-    "chai": "latest"
+    "mocha-lcov-reporter": "latest"
   }
 }
