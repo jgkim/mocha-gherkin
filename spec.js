@@ -67,7 +67,6 @@ function GherkinSpec(runner) {
   runner.on('pass', function(test) {
     var fmt = indent()
       + colors.green('  ' + Base.symbols.ok + ' %s')
-      + colors.gray(' ');
     if (test.speed === 'fast') {
       cursor.CR();
       console.log(fmt, test.title);
