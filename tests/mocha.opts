@@ -1,0 +1,4 @@
+--require ./mocha-gherkin.js
+--ui mocha-gherkin
+--reporter spec.js
+--timeout 500
