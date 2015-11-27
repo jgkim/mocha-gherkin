@@ -3,7 +3,7 @@ node_js:
   - "4.1"
   - "4.0"
 before_script:
-  - gulp
+  - npm run compile
 script:
   - npm run lint
   - npm test
