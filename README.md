@@ -2,6 +2,7 @@
 
 [![NPM Version](https://badge.fury.io/js/mocha-gherkin.svg)](https://npmjs.org/package/mocha-gherkin)
 [![Build Status](https://travis-ci.org/jgkim/mocha-gherkin.svg?branch=master)](https://travis-ci.org/jgkim/mocha-gherkin)
+[![Coverage Status](https://coveralls.io/repos/jgkim/mocha-gherkin/badge.svg?branch=master&service=github)](https://coveralls.io/github/jgkim/mocha-gherkin?branch=master)
 [![Dependency Status](https://david-dm.org/jgkim/mocha-gherkin.svg)](https://david-dm.org/jgkim/mocha-gherkin)
 
 `mocha-gherkin` is a [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)-style interface and reporter add-on for [mocha](https://mochajs.org/). This add-on allows you to describe your features using `Feature`, `Scenario`, `Given`, `When`, `Then`, `And`, and `But`. You can use this interface together with mocha's [BDD](https://mochajs.org/#bdd) interface.
