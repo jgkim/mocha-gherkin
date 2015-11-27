@@ -1,6 +1,6 @@
 {
   "name": "mocha-gherkin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
   "keywords": [
     "mocha",
@@ -18,15 +18,25 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --opts tests/mocha.opts --recursive tests"
+    "compile": "gulp compile",
+    "lint": "eslint .",
+    "test": "mocha --opts tests/mocha.opts --recursive tests",
+    "clean": "gulp clean"
   },
   "dependencies": {
     "colors": "latest"
   },
   "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-preset-es2015": "^6.1.18",
     "chai": "latest",
-    "coveralls": "latest",
-    "mocha": "latest",
-    "mocha-lcov-reporter": "latest"
+    "del": "^2.1.0",
+    "eslint": "^1.10.1",
+    "eslint-config-tipplr": "^0.1.3",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "mocha": "latest"
   }
 }

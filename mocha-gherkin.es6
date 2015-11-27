@@ -1,4 +1,4 @@
-var Mocha = require('mocha');
+const Mocha = require('mocha');
 
 /**
  * Gherkin-style interface:
@@ -25,39 +25,37 @@ var Mocha = require('mocha');
  *
  * @param {Suite} suite
  */
-module.exports = Mocha.interfaces['mocha-gherkin'] = function (suite) {
+module.exports = Mocha.interfaces['mocha-gherkin'] = function mochaGherkin(suite) {
   Mocha.interfaces.bdd(suite);
 
-  suite.on('pre-require', function (context, file, mocha) {
+  suite.on('pre-require', (context) => {
     /**
      * Some terse yet descriptive text of what is desired.
      *
      * @param {String} title
-     * @param {...String} [story]
+     * @param {...Mixed} args
      *   Textual description of the business value of this feature.
-     *   Business rules that govern the scope of the feature.
-     *   Any additional information that will make the feature easier to understand.
-     * @param {Function} fn
-     * @return {Suite} suite
+     *     Business rules that govern the scope of the feature.
+     *     Any additional information that will make the feature easier to understand.
+     *   and a function to test.
+     * @return {Suite} newSuite
      */
-    context.Feature = function (title, story, fn_) {
-      var fn      = fn_;
-      var stories = null;
+    context.Feature = (title, ...args) => {
+      const fn = args[args.length - 1];
 
-      // Cf. https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments
-      if (arguments.length > 2) {
-        stories = new Array(arguments.length - 2);
-        for(var i = 0; i < stories.length; ++i) {
-          stories[i] = arguments[i + 1];
+      let stories = null;
+      if (args.length > 1) {
+        stories = [];
+        for (let i = 0; i < args.length - 1; i++) {
+          stories.push(args[i]);
         }
-        fn = arguments[arguments.length - 1];
       }
 
-      var suite = context.describe('Feature: ' + title, fn);
-      suite.name = 'Feature';
-      suite.stories = stories;
+      const newSuite = context.describe('Feature: ' + title, fn);
+      newSuite.name = 'Feature';
+      newSuite.stories = stories;
 
-      return suite;
+      return newSuite;
     };
 
     /**
@@ -65,14 +63,14 @@ module.exports = Mocha.interfaces['mocha-gherkin'] = function (suite) {
      *
      * @param {String} title
      * @param {Function} fn
-     * @return {Suite} suite
+     * @return {Suite} newSuite
      */
-    context.Scenario = function (title, fn) {
-      var suite = context.describe('Scenario: ' + title, fn);
-      suite.name = 'Scenario';
+    context.Scenario = (title, fn) => {
+      const newSuite = context.describe('Scenario: ' + title, fn);
+      newSuite.name = 'Scenario';
 
-      return suite;
-    }
+      return newSuite;
+    };
 
     /**
      * Given some precondition
@@ -86,16 +84,16 @@ module.exports = Mocha.interfaces['mocha-gherkin'] = function (suite) {
      *
      * @param {String} title
      * @param {Function} fn
-     * @return {Suite} suite
+     * @return {Suite} test
      */
     const clauses = ['Given', 'When', 'Then', 'And', 'But'];
     clauses.forEach((clause) => {
-      context[clause] = function (title, fn) {
-        var test = context.it(clause + ' ' + title, fn);
+      context[clause] = (title, fn) => {
+        const test = context.it(clause + ' ' + title, fn);
         test.name = clause;
 
         return test;
-      }
-    })
+      };
+    });
   });
 };

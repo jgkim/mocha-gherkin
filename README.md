@@ -6,27 +6,30 @@
 
 `mocha-gherkin` is a [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin)-style interface and reporter add-on for [mocha](https://mochajs.org/). This add-on allows you to describe your features using `Feature`, `Scenario`, `Given`, `When`, `Then`, `And`, and `But`. You can use this interface together with mocha's [BDD](https://mochajs.org/#bdd) interface.
 
-```js
+```javascript
 Feature('Addition',
   'In order to avoid silly mistakes,',
   'As a math idiot',
-  'I want to be told the sum of two numbers', function () {
+  'I want to be told the sum of two numbers', () => {
+    Scenario('Add two numbers', () => {
+      let number1;
+      let number2;
+      let sum;
 
-  Scenario('Add two numbers', function () {
-    Given('I have entered 50 into the calculator', function () {
-      this.number1 = 50;
-    });
-    And('I have entered 70 into the calculator', function () {
-      this.number2 = 70;
-    });
-    When('I press add', function () {
-      this.sum = this.number1 + this.number2;
-    });
-    Then('the result should be 120 on the screen', function () {
-      expect(this.sum).to.equal(120);
+      Given('I have entered 50 into the calculator', () => {
+        number1 = 50;
+      });
+      And('I have entered 70 into the calculator', () => {
+        number2 = 70;
+      });
+      When('I press add', () => {
+        sum = number1 + number2;
+      });
+      Then('the result should be 120 on the screen', () => {
+        expect(sum).to.equal(120);
+      });
     });
   });
-});
 ```
 
 ## Installing

@@ -1,11 +1,8 @@
-var Mocha    = require('mocha');
-var inherits = Mocha.utils.inherits;
-var Base     = Mocha.reporters.Base;
-var colors   = require('colors/safe');
-var cursor   = Base.cursor;
-
-// Expose `GherkinSpec`.
-exports = module.exports = GherkinSpec;
+const Mocha    = require('mocha');
+const inherits = Mocha.utils.inherits;
+const Base     = Mocha.reporters.Base;
+const colors   = require('colors/safe');
+const cursor   = Base.cursor;
 
 /**
  * Initialize a new `GherkinSpec` test reporter.
@@ -16,10 +13,8 @@ exports = module.exports = GherkinSpec;
 function GherkinSpec(runner) {
   Base.call(this, runner);
 
-  var parent = Base;
-  var self = this;
-  var indents = 0;
-  var n = 0;
+  let indents = 0;
+  let n       = 0;
 
   if (!Base.useColors) {
     colors.enabled = false;
@@ -29,14 +24,14 @@ function GherkinSpec(runner) {
     return Array(indents).join('  ');
   }
 
-  runner.on('start', function() {
+  runner.on('start', () => {
     console.log();
   });
 
-  runner.on('suite', function(suite) {
+  runner.on('suite', (suite) => {
     ++indents;
 
-    var text = suite.title;
+    let text = suite.title;
     switch (suite.name) {
       case 'Feature':
         text = colors.underline.bold(suite.title);
@@ -53,20 +48,19 @@ function GherkinSpec(runner) {
     console.log(indent() + text);
   });
 
-  runner.on('suite end', function() {
+  runner.on('suite end', () => {
     --indents;
     if (indents === 1) {
       console.log();
     }
   });
 
-  runner.on('pending', function(test) {
+  runner.on('pending', (test) => {
     console.log(indent() + '  ' + colors.cyan('- ' + test.title));
   });
 
-  runner.on('pass', function(test) {
-    var fmt = indent()
-      + colors.green('  ' + Base.symbols.ok + ' %s')
+  runner.on('pass', (test) => {
+    let fmt = indent() + colors.green('  ' + Base.symbols.ok + ' %s');
     if (test.speed === 'fast') {
       cursor.CR();
       console.log(fmt, test.title);
@@ -77,13 +71,16 @@ function GherkinSpec(runner) {
     }
   });
 
-  runner.on('fail', function(test) {
+  runner.on('fail', (test) => {
     cursor.CR();
     console.log(indent() + '  ' + colors.red('%d) %s'), ++n, test.title);
   });
 
-  runner.on('end', self.epilogue.bind(self));
+  runner.on('end', this.epilogue.bind(this));
 }
 
 // Inherit from `Base.prototype`.
 inherits(GherkinSpec, Base);
+
+// Expose `GherkinSpec`.
+exports = module.exports = GherkinSpec;
