@@ -1,6 +1,6 @@
 {
   "name": "mocha-gherkin",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
   "keywords": [
     "mocha",
@@ -22,8 +22,12 @@
     "compile": "babel --source-maps true --out-dir build src",
     "lint": "eslint .",
     "test": "mocha --opts tests/mocha.opts --recursive tests",
-    "cover": "istanbul cover `npm bin`/_mocha --report json -- --opts tests/mocha.opts --recursive tests && remap-istanbul -i ./coverage/coverage-final.json -o coverage/lcov-remapped.info -t lcovonly",
-    "coveralls": "npm run cover && cat ./coverage/lcov-remapped.info | `npm bin`/coveralls && rm -rf ./coverage",
+    "posttest": "npm run lint",
+    "cover": "istanbul cover `npm bin`/_mocha --report json -- --opts tests/mocha.opts --recursive tests",
+    "postcover": "remap-istanbul -i ./coverage/coverage-final.json -o coverage/lcov-remapped.info -t lcovonly",
+    "precoveralls": "npm run cover",
+    "coveralls": "cat ./coverage/lcov-remapped.info | `npm bin`/coveralls",
+    "postcoveralls": "rm -rf ./coverage",
     "clean": "rm -rf ./build",
     "distclean": "rm -rf ./build ./coverage ./node_modules"
   },
