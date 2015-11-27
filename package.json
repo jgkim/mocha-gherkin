@@ -1,6 +1,6 @@
 {
   "name": "mocha-gherkin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
   "keywords": [
     "mocha",
@@ -19,10 +19,13 @@
   "main": "build/index.js",
   "scripts": {
     "prepublish": "npm run compile",
-    "compile": "babel -d build src",
+    "compile": "babel --source-maps true --out-dir build src",
     "lint": "eslint .",
     "test": "mocha --opts tests/mocha.opts --recursive tests",
-    "clean": "rm -rf build"
+    "cover": "istanbul cover `npm bin`/_mocha --report json -- --opts tests/mocha.opts --recursive tests && remap-istanbul -i ./coverage/coverage-final.json -o coverage/lcov-remapped.info -t lcovonly",
+    "coveralls": "npm run cover && cat ./coverage/lcov-remapped.info | `npm bin`/coveralls && rm -rf ./coverage",
+    "clean": "rm -rf ./build",
+    "distclean": "rm -rf ./build ./coverage ./node_modules"
   },
   "dependencies": {
     "colors": "latest"
@@ -31,10 +34,11 @@
     "babel-cli": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "chai": "latest",
-    "del": "^2.1.0",
+    "coveralls": "^2.11.4",
     "eslint": "^1.10.1",
     "eslint-config-tipplr": "^0.1.3",
-    "gulp": "^3.9.0",
-    "mocha": "latest"
+    "istanbul": "^0.4.1",
+    "mocha": "latest",
+    "remap-istanbul": "^0.4.0"
   }
 }

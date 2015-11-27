@@ -3,3 +3,5 @@ node_modules/*
 !node_modules/mocha-gherkin
 npm-debug.log
 build/
+coverage/
+.coveralls.yml
