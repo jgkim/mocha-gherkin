@@ -1,6 +1,6 @@
 {
   "name": "mocha-gherkin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
   "keywords": [
     "mocha",
@@ -31,7 +31,7 @@
     "colors": "latest"
   },
   "peerDependencies": {
-    "mocha": "latest"
+    "mocha": "^2.3.4"
   },
   "devDependencies": {
     "babel-cli": "^6.2.0",
