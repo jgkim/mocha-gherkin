@@ -1,5 +1,5 @@
---require ./mocha-gherkin.js
+--require build/mocha-gherkin
 --ui mocha-gherkin
---reporter spec.js
+--reporter build/spec
 --compilers js:babel-core/register
 --timeout 500

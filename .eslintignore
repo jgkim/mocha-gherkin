@@ -1,2 +1,2 @@
-mocha-gherkin.js
-spec.js
+**/*.md
+build/
