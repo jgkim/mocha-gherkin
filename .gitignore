@@ -1,6 +1,5 @@
 **/.DS_Store
-node_modules/*
-!node_modules/mocha-gherkin
+node_modules/
 npm-debug.log
 build/
 coverage/

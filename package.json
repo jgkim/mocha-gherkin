@@ -21,16 +21,16 @@
     "prepublish": "npm run compile",
     "compile": "babel --source-maps true --out-dir build src",
     "lint": "eslint .",
+    "pretest": "ln -s .. ./node_modules/mocha-gherkin",
     "test": "mocha --opts tests/mocha.opts --recursive tests",
-    "posttest": "npm run lint",
+    "posttest": "rm -f ./node_modules/mocha-gherkin && npm run lint",
     "cover": "istanbul cover `npm bin`/_mocha --report json -- --opts tests/mocha.opts --recursive tests",
     "postcover": "remap-istanbul -i ./coverage/coverage-final.json -o coverage/lcov-remapped.info -t lcovonly",
     "precoveralls": "npm run cover",
     "coveralls": "cat ./coverage/lcov-remapped.info | `npm bin`/coveralls",
     "postcoveralls": "rm -rf ./coverage",
     "clean": "rm -rf ./build",
-    "distclean": "rm -rf ./build ./coverage ./node_modules",
-    "postdistclean": "mkdir ./node_modules && ln -s .. ./node_modules/mocha-gherkin"
+    "distclean": "rm -rf ./build ./coverage ./node_modules"
   },
   "dependencies": {
     "colors": "latest"
