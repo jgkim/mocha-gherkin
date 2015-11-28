@@ -1,41 +1,13 @@
 {
   "extends": "tipplr",
   "rules": {
-    // disallow use of console in the node environment (recommended)
+    // disallow use of console
     "no-console": 0,
-    // disallow use of multiple spaces
-    "no-multi-spaces": [2, {
-      "exceptions": {
-        "Property"          : true,
-        "VariableDeclarator": true,
-        "ImportDeclaration" : true
-      }
-    }],
-    // specify tab or space width for your code (fixable)
-    "indent": [2, 2, {
-      "SwitchCase": 1
-    }],
     // require a capital letter for constructors
     "new-cap": [2, {
       "capIsNewExceptions": [
-        "Feature",
-        "Scenario",
-        "Given",
-        "When",
-        "Then",
-        "And",
-        "But",
         "cursor.CR"
       ]
     }]
-  },
-  "globals": {
-    "Feature" : true,
-    "Scenario": true,
-    "Given"   : true,
-    "When"    : true,
-    "Then"    : true,
-    "And"     : true,
-    "But"     : true
   }
 }
