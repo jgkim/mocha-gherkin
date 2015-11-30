@@ -21,5 +21,8 @@ Feature('Addition',
       Then('the result should be 120 on the screen', () => {
         expect(sum).to.equal(120);
       });
+
+      // mix-in with other BDD terms
+      it('should be working.');
     });
   });

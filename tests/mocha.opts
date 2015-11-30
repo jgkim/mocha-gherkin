@@ -3,3 +3,4 @@
 --reporter build/spec
 --compilers js:babel-core/register
 --timeout 500
+--recursive
