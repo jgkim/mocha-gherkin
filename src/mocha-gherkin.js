@@ -1,4 +1,4 @@
-const Mocha = require('mocha');
+import { interfaces } from 'mocha';
 
 /**
  * Gherkin-style interface:
@@ -25,8 +25,8 @@ const Mocha = require('mocha');
  *
  * @param {Suite} suite
  */
-module.exports = Mocha.interfaces['mocha-gherkin'] = function mochaGherkin(suite) {
-  Mocha.interfaces.bdd(suite);
+interfaces['mocha-gherkin'] = function mochaGherkin(suite) {
+  interfaces.bdd(suite);
 
   suite.on('pre-require', (context) => {
     /**
@@ -97,3 +97,4 @@ module.exports = Mocha.interfaces['mocha-gherkin'] = function mochaGherkin(suite
     });
   });
 };
+export default interfaces['mocha-gherkin'];

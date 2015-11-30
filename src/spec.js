@@ -1,7 +1,8 @@
-const Mocha    = require('mocha');
+import Mocha from 'mocha';
+import colors from 'colors/safe';
+
 const inherits = Mocha.utils.inherits;
 const Base     = Mocha.reporters.Base;
-const colors   = require('colors/safe');
 const cursor   = Base.cursor;
 
 /**

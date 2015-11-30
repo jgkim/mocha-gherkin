@@ -1,5 +1,4 @@
-const chai   = require('chai');
-const expect = chai.expect;
+import { expect } from 'chai';
 
 Feature('Addition',
   'In order to avoid silly mistakes,',
