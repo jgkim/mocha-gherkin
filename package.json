@@ -1,6 +1,6 @@
 {
   "name": "mocha-gherkin",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
   "keywords": [
     "mocha",
@@ -22,9 +22,9 @@
     "build": "gulp build",
     "lint": "eslint .",
     "pretest": "ln -sfn .. ./node_modules/mocha-gherkin",
-    "test": "mocha --opts tests/mocha.opts tests",
+    "test": "mocha --opts tests/mocha.opts tests/addition.feature.js",
     "precover": "ln -sfn .. ./node_modules/mocha-gherkin",
-    "cover": "istanbul cover `npm bin`/_mocha -- --opts tests/mocha.opts tests",
+    "cover": "istanbul cover `npm bin`/_mocha -- --opts tests/mocha.opts tests/addition.feature.js",
     "postcover": "remap-istanbul -i ./tests/coverage/coverage-final.json -o ./tests/coverage/lcov-remapped.info -t lcovonly",
     "precoveralls": "npm run cover",
     "coveralls": "cat ./tests/coverage/lcov-remapped.info | `npm bin`/coveralls",
