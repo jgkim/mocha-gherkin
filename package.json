@@ -1,6 +1,6 @@
 {
   "name": "mocha-gherkin",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
   "keywords": [
     "mocha",
@@ -33,7 +33,8 @@
     "distclean": "rm -rf ./build ./tests/coverage ./node_modules"
   },
   "dependencies": {
-    "colors": "latest"
+    "colors": "latest",
+    "source-map-support": "^0.4.0"
   },
   "peerDependencies": {
     "mocha": "^2.3.4"
@@ -52,7 +53,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "istanbul": "^0.4.1",
     "mocha": "latest",
-    "remap-istanbul": "^0.4.0",
-    "source-map-support": "^0.4.0"
+    "remap-istanbul": "^0.4.0"
   }
 }
