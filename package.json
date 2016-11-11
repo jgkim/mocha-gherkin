@@ -1,6 +1,6 @@
 {
   "name": "mocha-gherkin",
-  "version": "0.1.15",
+  "version": "0.2.0",
   "description": "mocha-gherkin is a Gherkin-style interface and reporter add-on for mocha.",
   "keywords": [
     "mocha",
