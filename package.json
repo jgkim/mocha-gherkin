@@ -34,25 +34,28 @@
   },
   "dependencies": {
     "colors": "latest",
-    "source-map-support": "^0.4.0"
+    "lodash.set": "^4.3.2",
+    "source-map-support": "^0.4.6"
   },
   "peerDependencies": {
-    "mocha": "^2.3.4"
+    "mocha": "latest"
   },
   "devDependencies": {
-    "babel-core": "^6.2.1",
-    "babel-plugin-add-module-exports": "^0.1.1",
-    "babel-preset-es2015": "^6.1.18",
+    "babel-core": "^6.18.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.18.0",
     "chai": "latest",
-    "coveralls": "^2.11.4",
-    "eslint": "^1.10.1",
+    "coveralls": "^2.11.14",
+    "eslint": "^3.9.1",
     "eslint-config-tipplr": "latest",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-header": "^1.7.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "istanbul": "^0.4.1",
+    "eslint-plugin-ava": "^4.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-header": "^1.8.8",
+    "gulp-sourcemaps": "github:floridoo/gulp-sourcemaps",
+    "istanbul": "^0.4.5",
     "mocha": "latest",
-    "remap-istanbul": "^0.4.0"
+    "remap-istanbul": "^0.7.0"
   }
 }
