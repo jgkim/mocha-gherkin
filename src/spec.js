@@ -30,14 +30,14 @@ function GherkinSpec(runner) {
   });
 
   runner.on('suite', (suite) => {
-    ++indents;
+    indents += 1;
 
     let text = suite.title;
     switch (suite.name) {
       case 'Feature':
         text = colors.underline.bold(suite.title);
         suite.stories.forEach((story) => {
-          text += '\n' + indent() + '  ' + (story);
+          text += `\n${indent()}  ${story}`;
         });
         break;
       case 'Scenario':
@@ -50,18 +50,18 @@ function GherkinSpec(runner) {
   });
 
   runner.on('suite end', () => {
-    --indents;
+    indents -= 1;
     if (indents === 1) {
       console.log();
     }
   });
 
   runner.on('pending', (test) => {
-    console.log(indent() + '  ' + colors.cyan('- ' + test.title));
+    console.log(`${indent()}  ${colors.cyan(`- ${test.title}`)}`);
   });
 
   runner.on('pass', (test) => {
-    let fmt = indent() + colors.green('  ' + Base.symbols.ok + ' %s');
+    let fmt = indent() + colors.green(`  ${Base.symbols.ok} %s`);
     if (test.speed === 'fast') {
       cursor.CR();
       console.log(fmt, test.title);
@@ -74,7 +74,8 @@ function GherkinSpec(runner) {
 
   runner.on('fail', (test) => {
     cursor.CR();
-    console.log(indent() + '  ' + colors.red('%d) %s'), ++n, test.title);
+    n += 1;
+    console.log(`${indent()}  ${colors.red('%d) %s')}`, n, test.title);
   });
 
   runner.on('end', this.epilogue.bind(this));

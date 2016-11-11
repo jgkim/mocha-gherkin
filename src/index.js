@@ -1,2 +1,3 @@
-import mochaGherkin from './mocha-gherkin.js';
+import mochaGherkin from './mocha-gherkin';
+
 export default mochaGherkin;

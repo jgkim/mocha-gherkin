@@ -1,3 +1,4 @@
+import set from 'lodash.set';
 import { interfaces } from 'mocha';
 
 /**
@@ -40,23 +41,23 @@ interfaces['mocha-gherkin'] = function mochaGherkin(suite) {
      *   and a function to test.
      * @return {Suite} newSuite
      */
-    context.Feature = (title, ...args) => {
+    set(context, 'Feature', (title, ...args) => {
       const fn = args[args.length - 1];
 
       let stories = null;
       if (args.length > 1) {
         stories = [];
-        for (let i = 0; i < args.length - 1; i++) {
+        for (let i = 0; i < args.length - 1; i += 1) {
           stories.push(args[i]);
         }
       }
 
-      const newSuite = context.describe('Feature: ' + title, fn);
+      const newSuite = context.describe(`Feature: ${title}`, fn);
       newSuite.name = 'Feature';
       newSuite.stories = stories;
 
       return newSuite;
-    };
+    });
 
     /**
      * Some determinable business situation.
@@ -65,12 +66,12 @@ interfaces['mocha-gherkin'] = function mochaGherkin(suite) {
      * @param {Function} fn
      * @return {Suite} newSuite
      */
-    context.Scenario = (title, fn) => {
-      const newSuite = context.describe('Scenario: ' + title, fn);
+    set(context, 'Scenario', (title, fn) => {
+      const newSuite = context.describe(`Scenario: ${title}`, fn);
       newSuite.name = 'Scenario';
 
       return newSuite;
-    };
+    });
 
     /**
      * Given some precondition
@@ -88,12 +89,12 @@ interfaces['mocha-gherkin'] = function mochaGherkin(suite) {
      */
     const clauses = ['Given', 'When', 'Then', 'And', 'But'];
     clauses.forEach((clause) => {
-      context[clause] = (title, fn) => {
-        const test = context.it(clause + ' ' + title, fn);
+      set(context, clause, (title, fn) => {
+        const test = context.it(`${clause} ${title}`, fn);
         test.name = clause;
 
         return test;
-      };
+      });
     });
   });
 };
